@@ -6,6 +6,7 @@ import {
   RiFile4Line,
   RiFolderUserLine,
   RiNotificationLine,
+  RiShutDownLine,
 } from "react-icons/ri";
 
 const Navlinks = () => {
@@ -24,28 +25,33 @@ const Navlinks = () => {
 
         <ul className="flex lg:flex-col flex-row items-center gap-7 md:gap-10 px-2 md:px-0">
           <li className="">
-            <button className="lg:text-[28px] text-[22px]">
+            <button className="lg:text-[28px] text-[22px] cursor-pointer">
               <RiChatAiLine color="#fff" />
             </button>
           </li>
           <li className="">
-            <button className="lg:text-[28px] text-[22px]">
+            <button className="lg:text-[28px] text-[22px] cursor-pointer">
               <RiFolderUserLine color="#fff" />
             </button>
           </li>
           <li className="">
-            <button className="lg:text-[28px] text-[22px]">
+            <button className="lg:text-[28px] text-[22px] cursor-pointer">
               <RiNotificationLine color="#fff" />
             </button>
           </li>
           <li className="">
-            <button className="lg:text-[28px] text-[22px]">
+            <button className="lg:text-[28px] text-[22px] cursor-pointer">
               <RiFile4Line color="#fff" />
             </button>
           </li>
           <li className="">
-            <button className="lg:text-[28px] text-[22px]">
+            <button className="lg:text-[28px] text-[22px] cursor-pointer">
               <RiBardLine color="#fff" />
+            </button>
+          </li>
+          <li className="">
+            <button className="lg:text-[28px] text-[22px] cursor-pointer">
+              <RiShutDownLine color="#fff" />
             </button>
           </li>
         </ul>

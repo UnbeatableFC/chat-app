@@ -8,8 +8,8 @@ const App = () => {
   return (
     <div className="flex lg:flex-row flex-col items-start w-[100%]">
       <Navlinks />
-      <Chatbox />
       <Chatlist />
+      <Chatbox />
     </div>
   );
 };
