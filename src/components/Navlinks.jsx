@@ -8,10 +8,21 @@ import {
   RiNotificationLine,
   RiShutDownLine,
 } from "react-icons/ri";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig";
 
 const Navlinks = () => {
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      alert("Logged Out");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <section className="sticky lg:static top-0 flex items-center lg:items-start lg:justify-start h-[7vh] lg:h-[100vh] w-full lg:w-[150px] py-8 lg:py-0 bg-[#01aa85]">
+    <section className="sticky z-20 lg:static top-0 flex items-center lg:items-start lg:justify-start h-[7vh] lg:h-[100vh] w-full lg:w-[150px] py-8 lg:py-0 bg-[#01aa85]">
       <main className="flex lg:flex-col items-center lg:gap-10 justify-between lg:px-0 w-full">
         <div className="flex items-start justify-center lg:border-b border-b-1 border-b-gray-200 lg:w-full p-4">
           <span className="flex items-center justify-center bg-white w-[57px] h-[48px] rounded-lg p-2">
@@ -50,7 +61,10 @@ const Navlinks = () => {
             </button>
           </li>
           <li className="">
-            <button className="lg:text-[28px] text-[22px] cursor-pointer">
+            <button
+              onClick={handleLogout}
+              className="lg:text-[28px] text-[22px] cursor-pointer"
+            >
               <RiShutDownLine color="#fff" />
             </button>
           </li>

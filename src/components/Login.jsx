@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig";
 
-const Login = () => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChangeUserData = (e) => {
     const { name, value } = e.target;
@@ -16,10 +20,17 @@ const Login = () => {
   };
 
   const handleAuth = async () => {
+    setIsLoading(true);
     try {
-      alert("Login Successful");
+      await signInWithEmailAndPassword(
+        auth,
+        userData.email,
+        userData.password
+      );
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -54,16 +65,27 @@ const Login = () => {
           <button
             className="bg-[#01aa85] text-white font-bold w-full p-2 rounded-md flex items-center justify-center gap-2"
             onClick={handleAuth}
+            disabled={isLoading}
           >
-            Log In
-            <FaSignInAlt />
+            {isLoading ? (
+              <>Loading...</>
+            ) : (
+              <>
+                Log In <FaSignInAlt />
+              </>
+            )}
           </button>
         </div>
         <div className="mt-5 text-center text-gray-400 text-sm">
           <p>
             Don't have an account yet?{" "}
             <span>
-              <button>Sign Up</button>
+              <button
+                className="text-green-700/80 cursor-pointer"
+                onClick={() => setIsLoggedIn(!isLoggedIn)}
+              >
+                Sign Up
+              </button>
             </span>
           </p>
         </div>
